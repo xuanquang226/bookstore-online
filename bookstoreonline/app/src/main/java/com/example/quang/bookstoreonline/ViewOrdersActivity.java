@@ -20,8 +20,9 @@ public class ViewOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.view_orders_layout);
 
         listView = (ListView) findViewById(R.id.listViewVOrders);
-        viewOrders.add(new ViewOrdersModel("Quà tặng diệu kỳ", "150.000 VND", "First New", R.drawable.quatang));
-        viewOrders.add(new ViewOrdersModel("Bí mật của may mắn", "80.000 VND", "First New", R.drawable.bimat));
+        viewOrders.add(new ViewOrdersModel("Đắc nhân tâm", "150.000", "First New", R.drawable.dacnhantam));
+        viewOrders.add(new ViewOrdersModel("Quà tặng diệu kỳ", "150.000", "First New", R.drawable.quatang2));
+        viewOrders.add(new ViewOrdersModel("Bí mật của may mắn", "80.000", "First New", R.drawable.bimat));
 
         adapter = new ViewOrdersAdapter(this, R.layout.listview_view_orders_custom, viewOrders);
         listView.setAdapter(adapter);
