@@ -1,6 +1,7 @@
 package com.example.quang.bookstoreonline;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,15 +14,23 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.quang.bookstoreonline.Adapters.FeatureBookAdapter;
+import com.example.quang.bookstoreonline.Adapters.NewBookAdapter;
 import com.example.quang.bookstoreonline.Adapters.RecyclerViewAdapter;
 import com.example.quang.bookstoreonline.Models.CardViewModel;
+import com.example.quang.bookstoreonline.Models.NewBookModel;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 
@@ -30,24 +39,28 @@ import java.util.Vector;
  */
 public class HomeFragment extends Fragment {
 
-    DrawerLayout mDrawerLayout;
-    ActionBarDrawerToggle mToggle;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
 
     private Vector<CardViewModel> data = new Vector<CardViewModel>();
     RecyclerView recyclerView;
     private int position = 0;
 
-    private void scrollbyTime(){
+    private ArrayList<NewBookModel> newBookModels = new ArrayList<NewBookModel>();
+    private NewBookAdapter adapterA;
+
+
+    private void scrollbyTime() {
         final android.os.Handler handler = new android.os.Handler();
         handler.post(new Runnable() {
             @Override
             public void run() {
                 position++;
-                if(position>=data.size()){
+                if (position >= data.size()) {
                     position = 0;
                 }
                 recyclerView.smoothScrollToPosition(position);
-                handler.postDelayed(this,3000);
+                handler.postDelayed(this, 3000);
             }
         });
     }
@@ -65,19 +78,43 @@ public class HomeFragment extends Fragment {
         View view = null;
         view = inflater.inflate(R.layout.fragment_home_layout, container, false);
 
+        //Navigation drawer
         mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawLayout);
-        mToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
+        mToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = (NavigationView) view.findViewById(R.id.nav_drawer);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.NewBook:
+                        startActivity(new Intent(getActivity(), NewBookActivity.class));
+                        return true;
+                    case R.id.FBook:
+                        startActivity(new Intent(getActivity(), FeatureBookActivity.class));
+                        return true;
+
+                }
+                return true;
+            }
+        });
 
 
-        data.add(new CardViewModel(R.drawable.dacnhantam,"Đắc nhân tâm"));
-        data.add(new CardViewModel(R.drawable.quatang2,"Quà tặng diệu kỳ"));
-        data.add(new CardViewModel(R.drawable.bimat,"Bí mật của may mắn"));
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setTitle("Home");
+
+
+        //RecyclerView
+        data.add(new CardViewModel(R.drawable.dacnhantam, "Đắc nhân tâm"));
+        data.add(new CardViewModel(R.drawable.quatang2, "Quà tặng diệu kỳ"));
+        data.add(new CardViewModel(R.drawable.bimat, "Bí mật của may mắn"));
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        CustomLinearLayoutManager layoutManager = new CustomLinearLayoutManager(getActivity(),800);
+        CustomLinearLayoutManager layoutManager = new CustomLinearLayoutManager(getActivity(), 800);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -85,7 +122,23 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         scrollbyTime();
 
+        //ListView
+        ListView listView = (ListView) view.findViewById(R.id.listViewNewBook);
+        newBookModels.add(new NewBookModel("Đắc nhân tâm", "100.000VND", "First new", R.drawable.dacnhantam, R.drawable.giohang));
+        newBookModels.add(new NewBookModel("Bí mật của may mắn", "50.000VND", "First new", R.drawable.bimat, R.drawable.giohang));
+        newBookModels.add(new NewBookModel("Quà tặng diệu kỳ", "100.000VND", "First new", R.drawable.quatang2, R.drawable.giohang));
+        adapterA = new NewBookAdapter((AppCompatActivity) getActivity(), R.layout.listview_newbook_custom, newBookModels);
+        listView.setAdapter(adapterA);
+
+
         return view;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        getActivity().getMenuInflater().inflate(R.menu.navigation_drawer, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -95,4 +148,6 @@ public class HomeFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

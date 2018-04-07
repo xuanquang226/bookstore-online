@@ -13,12 +13,7 @@
         android:layout_weight="6"
         android:orientation="vertical"
         android:gravity="center_horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shopping Cart"
-            android:textColor="@color/colorGreenB"
-            android:textSize="35sp" />
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -58,7 +58,6 @@ public class AddSubControl extends LinearLayout {
             @Override
             public void onClick(View view) {
                 addSubFuntion.onSubClicked();
-
             }
         });
 

@@ -4,6 +4,7 @@ package com.example.quang.bookstoreonline;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,9 @@ public class SaleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view;
         view = inflater.inflate(R.layout.fragment_sale_layout, container, false);
+
+        ActionBar actionBar = ((AppCompatActivity) getActivity()). getSupportActionBar();
+        actionBar.setTitle("Promotion");
 
         listView = (ListView) view.findViewById(R.id.listViewSale);
 
