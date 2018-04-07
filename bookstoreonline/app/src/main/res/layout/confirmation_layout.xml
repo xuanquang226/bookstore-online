@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.quang.bookstoreonline.ConfirmationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmation"
+            android:textSize="35sp"
+            android:textColor="@color/colorGreenA"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username: "
+            android:id="@+id/txtUsernameC"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtUsernameC"
+            android:layout_toRightOf="@id/txtUsernameC"
+            android:layout_alignBaseline="@+id/txtUsernameC"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:id="@+id/txtEmailC"
+            android:layout_below="@+id/edtUsernameC"
+            android:layout_alignLeft="@+id/txtUsernameC"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtEmailC"
+            android:layout_toRightOf="@id/txtUsernameC"
+            android:layout_alignBaseline="@+id/txtEmailC"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Coin: "
+            android:id="@+id/txtCoin"
+            android:layout_below="@+id/edtEmailC"
+            android:layout_alignLeft="@+id/txtEmailC"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtCoin"
+            android:layout_toRightOf="@id/txtUsernameC"
+            android:layout_alignBaseline="@+id/txtCoin"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address: "
+            android:id="@+id/txtAddressB"
+            android:layout_below="@+id/edtCoin"
+            android:layout_alignLeft="@+id/txtCoin"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtAddressB"
+            android:layout_toRightOf="@id/txtUsernameC"
+            android:layout_alignBaseline="@+id/txtAddressB"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone:"
+            android:id="@+id/txtPhoneB"
+            android:layout_below="@+id/edtAddressB"
+            android:layout_alignLeft="@+id/txtAddressB"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtPhoneB"
+            android:layout_toRightOf="@id/txtUsernameC"
+            android:layout_alignBaseline="@+id/txtPhoneB"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: "
+            android:id="@+id/txtTotal"
+            android:layout_below="@+id/edtPhoneB"
+            android:layout_alignLeft="@+id/txtPhoneB"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtPhone"
+            android:layout_toRightOf="@id/txtUsernameC"
+            android:layout_alignBaseline="@+id/txtTotal"
+            android:inputType="phone"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order"
+            android:textAllCaps="false"
+            android:background="@drawable/bgr_button_custom"
+            android:textColor="@color/colorWhite"
+            android:layout_marginRight="10dp"
+            android:id="@+id/btnOrder"/>
+
+    </LinearLayout>
+
+</LinearLayout>
