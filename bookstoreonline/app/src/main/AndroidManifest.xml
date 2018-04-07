@@ -22,8 +22,8 @@
         <activity android:name=".NewPasswordActivity" />
         <activity android:name=".ConfirmationActivity" />
         <activity android:name=".ProductDetailActivity" />
-        <activity android:name=".ViewOrdersActivity">
-        </activity>
+        <activity android:name=".ViewOrdersActivity"></activity>
+        <activity android:name=".CartActivity"></activity>
     </application>
 
 </manifest>

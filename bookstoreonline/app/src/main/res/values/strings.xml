@@ -5,6 +5,8 @@
     <string name="title_book">Book</string>
     <string name="title_sale">Sale</string>
     <string name="title_person">User</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

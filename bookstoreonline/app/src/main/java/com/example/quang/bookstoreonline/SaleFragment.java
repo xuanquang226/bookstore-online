@@ -34,7 +34,7 @@ public class SaleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = null;
+        View view;
         view = inflater.inflate(R.layout.fragment_sale_layout, container, false);
 
         listView = (ListView) view.findViewById(R.id.listViewSale);
