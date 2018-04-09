@@ -24,8 +24,6 @@
         <activity android:name=".ProductDetailActivity" />
         <activity android:name=".ViewOrdersActivity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".NewBookActivity" />
-        <activity android:name=".FeatureBookActivity"></activity>
     </application>
 
 </manifest>

@@ -42,7 +42,7 @@ public class SaleFragment extends Fragment {
         actionBar.setTitle("Promotion");
 
         listView = (ListView) view.findViewById(R.id.listViewSale);
-
+        saleModels.clear();
         saleModels.add(new SaleModel("Đắc nhân tâm", "80.000", "First new", R.drawable.dacnhantam, "100.000", "20%"));
         saleModels.add(new SaleModel("Quà tặng diệu kỳ", "120.000", "First new", R.drawable.quatang2, "150.000", "20%"));
         saleModels.add(new SaleModel("Bí mật của may mắn", "64.000", "First new", R.drawable.bimat, "80.000", "20%"));
