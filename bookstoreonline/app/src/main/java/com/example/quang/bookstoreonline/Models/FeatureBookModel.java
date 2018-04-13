@@ -9,14 +9,14 @@ public class FeatureBookModel {
     public String priceD;
     public String authorD;
     public Integer imgBookD;
-    public Integer imgCartD;
 
-    public FeatureBookModel(String nameBookD, String priceD, String authorD, Integer imgBookD, Integer imgCartD) {
+
+    public FeatureBookModel(String nameBookD, String priceD, String authorD, Integer imgBookD) {
         this.nameBookD = nameBookD;
         this.priceD = priceD;
         this.authorD = authorD;
         this.imgBookD = imgBookD;
-        this.imgCartD = imgCartD;
+
     }
 
     public String getNameBookD() {
@@ -51,11 +51,5 @@ public class FeatureBookModel {
         this.imgBookD = imgBookD;
     }
 
-    public Integer getImgCartD() {
-        return imgCartD;
-    }
 
-    public void setImgCartD(Integer imgCartD) {
-        this.imgCartD = imgCartD;
-    }
 }

@@ -97,9 +97,9 @@ public class HomeFragment extends Fragment {
         //ListView
         listView = (ListView) view.findViewById(R.id.listViewNewBook);
         newBookModels.clear();
-        newBookModels.add(new NewBookModel("Đắc nhân tâm", "100.000VND", "First new", R.drawable.dacnhantam, R.drawable.giohang));
-        newBookModels.add(new NewBookModel("Bí mật của may mắn", "50.000VND", "First new", R.drawable.bimat, R.drawable.giohang));
-        newBookModels.add(new NewBookModel("Quà tặng diệu kỳ", "100.000VND", "First new", R.drawable.quatang2, R.drawable.giohang));
+        newBookModels.add(new NewBookModel("Đắc nhân tâm", "100.000VND", "First new", R.drawable.dacnhantam));
+        newBookModels.add(new NewBookModel("Bí mật của may mắn", "50.000VND", "First new", R.drawable.bimat));
+        newBookModels.add(new NewBookModel("Quà tặng diệu kỳ", "100.000VND", "First new", R.drawable.quatang2));
         adapterA = new NewBookAdapter((AppCompatActivity) getActivity(), R.layout.listview_newbook_custom, newBookModels);
         listView.setAdapter(adapterA);
 

@@ -52,7 +52,6 @@ public class NewBookAdapter extends ArrayAdapter<NewBookModel> {
             viewHolder.nameBookC = (TextView) convertView.findViewById(R.id.txtNameBookC);
             viewHolder.priceC = (TextView) convertView.findViewById(R.id.txtPriceC);
             viewHolder.authorC = (TextView) convertView.findViewById(R.id.txtAuthorC);
-            viewHolder.cart = (ImageView) convertView.findViewById(R.id.imgCart);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -63,7 +62,6 @@ public class NewBookAdapter extends ArrayAdapter<NewBookModel> {
         viewHolder.priceC.setText(newBookModels.get(position).getPriceC() + " VND");
         viewHolder.authorC.setText(newBookModels.get(position).getAuthorC());
         viewHolder.imgBookC.setImageResource(newBookModels.get(position).getImgBookC());
-        viewHolder.cart.setImageResource(newBookModels.get(position).getImgCart());
 
         return convertView;
     }

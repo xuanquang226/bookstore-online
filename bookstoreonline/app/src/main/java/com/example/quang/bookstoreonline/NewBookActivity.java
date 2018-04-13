@@ -28,9 +28,9 @@ public class NewBookActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.listViewNewBookA);
-        newBook.add(new NewBookModel("Đắc nhân tâm", "150.000", "First New", R.drawable.dacnhantam,R.drawable.giohang));
-        newBook.add(new NewBookModel("Quà tặng diệu kỳ", "150.000", "First New", R.drawable.quatang2,R.drawable.giohang));
-        newBook.add(new NewBookModel("Bí mật của may mắn", "80.000", "First New", R.drawable.bimat,R.drawable.giohang));
+        newBook.add(new NewBookModel("Đắc nhân tâm", "150.000", "First New", R.drawable.dacnhantam));
+        newBook.add(new NewBookModel("Quà tặng diệu kỳ", "150.000", "First New", R.drawable.quatang2));
+        newBook.add(new NewBookModel("Bí mật của may mắn", "80.000", "First New", R.drawable.bimat));
 
         adapter = new NewBookAdapter(this, R.layout.listview_newbook_custom, newBook);
         listView.setAdapter(adapter);

@@ -52,7 +52,7 @@ public class FeatureBookAdapter extends ArrayAdapter<FeatureBookModel> {
             viewHolder.nameBookD = (TextView) convertView.findViewById(R.id.txtNameBookD);
             viewHolder.priceD = (TextView) convertView.findViewById(R.id.txtPriceD);
             viewHolder.authorD = (TextView) convertView.findViewById(R.id.txtAuthorD);
-            viewHolder.cartD = (ImageView) convertView.findViewById(R.id.imgCartD);
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -62,7 +62,6 @@ public class FeatureBookAdapter extends ArrayAdapter<FeatureBookModel> {
         viewHolder.priceD.setText(featureBook.get(position).getPriceD() + " VND");
         viewHolder.authorD.setText(featureBook.get(position).getAuthorD());
         viewHolder.imgBookD.setImageResource(featureBook.get(position).getImgBookD());
-        viewHolder.cartD.setImageResource(featureBook.get(position).getImgCartD());
 
         return convertView;
     }
