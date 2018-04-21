@@ -18,7 +18,7 @@ class UserRepository extends BaseRepository
     }
     public function getAllUsers() 
     {
-        $users = $this->model->where('deleted_flag',0)->get();
+        $users = $this->model->get();
         return $users;
     }
 }

@@ -1,17 +1,4 @@
-<?php
-    use App\Models\MSetting;
-    use App\Models\MCategoryTranslation;
-    function findStory($param,$lang)
-    {
-        app()->setLocale($lang);
-        return MCategoryTranslation::where([['category_id',$param],['locale',$lang]])->first();
-    }
 
-    function findStatus($param)
-    {
-       return MSetting::where('s_value',$param)->where('s_key','STATUS')->first();
-    }
-?>
 @extends('Backend.masterpage.masterpage')
 @section('content')
     <div class="container-fluid">

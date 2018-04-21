@@ -1,17 +1,4 @@
-<?php
-use App\Models\MSetting;
-use App\Models\MItemStoryTranslation;
-use App\Repositories\ItemTranslateRepository;
-use App\Repositories\SettingRepository;
-$setting = new MSetting();
-$settingRepository = new SettingRepository($setting);
-$status = MSetting::where('s_key','STATUS')->get();
-    function getContentByLang($item_story,$lang)
-    {   
-        return MItemStoryTranslation::where([['item_story_id', $item_story],['locale',$lang]])->first();
-    }
-   
-?>
+
 @extends('Backend.masterpage.masterpage')
 @section('content')
     <!-- page content -->

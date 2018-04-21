@@ -19,9 +19,9 @@
                                 <button class="btn btn-default" type="button">Tìm kiếm!</button>
                             </span>
                         </div>
-                        <div style="float: right">
+                        <div style="float: right; margin-top: 50px">
                             <button type="submit" class="btn btn-success"
-                                    onclick="location.href='{{ URL::asset('/admin/category/add')}}';">Thêm danh mục
+                                    onclick="location.href='{{ URL::asset('/admin/book-type/add')}}';">Thêm danh mục
                             </button>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Danh sách danh mục
+                            <h2>Tất cả thể loại sách
                             </h2>
                             <div class="clearfix"></div>
                         </div>
@@ -63,51 +63,32 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Image</th>
-                                    <th>Category</th>
-                                    <th>Sort Order</th>
                                     <th>Hành động</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($list as $row)
+                                @foreach ($category_list as $row)
                                     <tr>
-                                        <td>{{$row['category_id']}}</td>
-                                        <td>{{$row['name']}}</td>
-                                        <td>Image</td>
-                                        <td>
-                                            @if($row['parent_id'] == 0)
-                                                Danh mục cha
-                                            @endif
-                                            @foreach ($category_list as $row_catalog)
-
-												@if($row_catalog['category_id'] == $row['parent_id'])
-                                                        {{$row_catalog['name']}}
-                                                @endif
-												@foreach($row_catalog['sub'] as $sub_catalog)
-													@if($sub_catalog['category_id'] == $row['parent_id'])
-                                                            {{$sub_catalog['name']}}
-                                                    @endif
-												@endforeach
-											@endforeach
-                                        </td>
-                                        <td>{{$row['sort_order']}}</td>
+                                        <?php $id = $row['c_type_id'];
+                                        echo($id); ?>
+                                        <td>{{$row['c_type_id']}}</td>
+                                        <td>{{$row['c_type_name']}}</td>
                                         <td>
                                             {{-- Nút Xem chi tiết--}}
                                             <button style="background: none; border: none" title="Xem chi tiết"
-                                                    onclick="location.href='{{ URL::asset('/admin/category/detail/1')}}';">
+                                                    onclick="location.href='{{ URL::asset('/admin/book-type/detail/')}}';'">
                                                 <span class="fa fa-eye"></span>
                                             </button>
 
                                             {{-- Nút Chỉnh sửa--}}
                                             <button style="background: none; border: none" title="Chỉnh sửa"
-                                                    onclick="location.href='{{ URL::asset('/admin/category/edit/1')}}';">
+                                                    onclick="location.href='{{ URL::asset('/admin/book-type/edit/')}}/<?php echo $row['c_type_id'] ?>';">
                                                 <span class="fa fa-pencil-square-o"></span>
                                             </button>
 
                                             {{--Nút Xóa--}}
                                             <button style="background: none; border: none" title="Xóa"
-                                                    onclick="location.href='{{ URL::asset('/admin/category/delete/1')}}';">
+                                                    onclick="location.href='{{ URL::asset('/admin/book-type/delete/')}}';">
                                                 <span class="fa fa-remove"></span>
                                             </button>
                                         </td>
@@ -124,5 +105,4 @@
         </div>
     </div>
     <!-- /page content -->
-
 @endsection

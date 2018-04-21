@@ -11,8 +11,8 @@ use App\Http\Controllers\Controller;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
-
-
+use App\Models\MCode;
+use App\Repositories\CodeRepository;
 
 class BackendController extends Controller
 {
@@ -69,7 +69,6 @@ class BackendController extends Controller
                 {
                     if($user->user_role == 0 || $user->user_role == 1)
                     {
-                        // var_dump($password,$user['password']);die();
                         if (Hash::check($password, $user['password']))
                         {
                             //if check remember me, rand auto a string and make remember_token of user 

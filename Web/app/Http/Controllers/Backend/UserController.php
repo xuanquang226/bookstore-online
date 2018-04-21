@@ -18,6 +18,7 @@ class UserController extends Controller
     {
         $currentLogin = SessionManager::getLoginInfo();
         $users = $userRepository->getAllUsers();
+        // var_dump($users);die();
         return view('Backend.users.index', ['users' => $users],['value' => $currentLogin]);
     }
 
