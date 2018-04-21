@@ -10,34 +10,34 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.quang.bookstoreonline.Models.FeatureBookModel;
 import com.example.quang.bookstoreonline.Models.NewBookModel;
-import com.example.quang.bookstoreonline.Models.ViewOrdersModel;
 import com.example.quang.bookstoreonline.R;
 
 import java.util.ArrayList;
 
 /**
- * Created by Quang on 4/7/2018.
+ * Created by Quang on 4/11/2018.
  */
 
-public class NewBookAdapter extends ArrayAdapter<NewBookModel> {
+public class FeatureBookAdapter extends ArrayAdapter<FeatureBookModel> {
     AppCompatActivity context;
     int layout;
-    ArrayList<NewBookModel> newBookModels;
+    ArrayList<FeatureBookModel> featureBook;
 
-    public NewBookAdapter(@NonNull AppCompatActivity context, int resource, @NonNull ArrayList<NewBookModel> objects) {
+    public FeatureBookAdapter(@NonNull AppCompatActivity context, int resource, @NonNull ArrayList<FeatureBookModel> objects) {
         super(context, resource, objects);
         this.context = context;
         this.layout = resource;
-        this.newBookModels = objects;
+        this.featureBook = objects;
     }
 
     public class ViewHolder {
-        ImageView imgBookC;
-        TextView nameBookC;
-        TextView priceC;
-        TextView authorC;
-        ImageView cart;
+        ImageView imgBookD;
+        TextView nameBookD;
+        TextView priceD;
+        TextView authorD;
+        ImageView cartD;
     }
 
     @NonNull
@@ -48,20 +48,20 @@ public class NewBookAdapter extends ArrayAdapter<NewBookModel> {
             LayoutInflater inflater = context.getLayoutInflater();
             convertView = inflater.inflate(layout, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.imgBookC = (ImageView) convertView.findViewById(R.id.imgBookListC);
-            viewHolder.nameBookC = (TextView) convertView.findViewById(R.id.txtNameBookC);
-            viewHolder.priceC = (TextView) convertView.findViewById(R.id.txtPriceC);
-            viewHolder.authorC = (TextView) convertView.findViewById(R.id.txtAuthorC);
+            viewHolder.imgBookD = (ImageView) convertView.findViewById(R.id.imgBookListD);
+            viewHolder.nameBookD = (TextView) convertView.findViewById(R.id.txtNameBookD);
+            viewHolder.priceD = (TextView) convertView.findViewById(R.id.txtPriceD);
+            viewHolder.authorD = (TextView) convertView.findViewById(R.id.txtAuthorD);
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-
-        viewHolder.nameBookC.setText(newBookModels.get(position).getNameBookC());
-        viewHolder.priceC.setText(newBookModels.get(position).getPriceC() + " VND");
-        viewHolder.authorC.setText(newBookModels.get(position).getAuthorC());
-        viewHolder.imgBookC.setImageResource(newBookModels.get(position).getImgBookC());
+        viewHolder.nameBookD.setText(featureBook.get(position).getNameBookD());
+        viewHolder.priceD.setText(featureBook.get(position).getPriceD() + " VND");
+        viewHolder.authorD.setText(featureBook.get(position).getAuthorD());
+        viewHolder.imgBookD.setImageResource(featureBook.get(position).getImgBookD());
 
         return convertView;
     }
