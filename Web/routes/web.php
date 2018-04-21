@@ -18,6 +18,7 @@ Route::group(['prefix' => '/admin','middleware' => 'AdminAuthencation'], functio
     Route::post('/book-type/add','Backend\CategoryController@createCategory');
     Route::get('/book-type/edit/{id}', 'Backend\CategoryController@editCategoryForm');
     Route::post('/book-type/edit/{id}', 'Backend\CategoryController@updateCategory');
+
     /*End Category*/
     
     Route::get('/stories','Backend\StoryController@index');
@@ -42,6 +43,4 @@ Route::group(['prefix' => '/admin','middleware' => 'AdminAuthencation'], functio
     Route::post('/book/edit/{id}','Backend\ProductController@postUpdate');
     Route::get('/book/delete/{id}','Backend\ProductController@delete');
     /*End story item*/
-
-
 });
