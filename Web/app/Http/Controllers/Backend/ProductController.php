@@ -68,8 +68,8 @@ class ProductController extends Controller
             $request->all(),
             [
                 
-                'bookname'      =>  'required|unique:m_item_story,code',
-                'description'    =>  'required|min:5|max:5',
+                'bookname'      =>  'required|unique:t_product,p_name',
+                'description'    =>  'required',
                 'price'    =>  'required',
                 'quantity'    =>  'required',
                 'image'     =>  'required|image|max:4096',
@@ -79,9 +79,7 @@ class ProductController extends Controller
             [
                 
                 'bookname.required'             => 'Vui lòng nhập mã cho bối cảnh',
-                'bookname.unique'               => 'Mã tìm kiếm này đã tồn tại', 
-                'description.min'                  => 'Mã tìm kiếm có tối thiểu 5 ký tự',
-                'description.max'                  => 'Mã tìm kiếm có tối đa 5 ký tự',              
+                'bookname.unique'               => 'Tên sách này đã tồn tại',          
                 'price.required'           => 'Vui lòng nhập giá sách',
                 'image.image'               => 'Hình ảnh bạn chọn không hợp lệ',
                 'image.max'                 => 'Hình ảnh phải nhỏ hơn 4MB',
@@ -134,23 +132,23 @@ class ProductController extends Controller
                 ], $book_item->p_id, "p_id");
 
             } else {
-                return redirect('item')->with('notify', "Xảy ra lỗi ở quá trình upload file!");
+                return redirect('book')->with('notify', "Xảy ra lỗi ở quá trình upload file!");
             }
             
             /* Thêm bối cảnh (vn) cho table m_item_story_translation */
            
             /* Kiểm tra trạng thái và redirect về trang danh sách danh mục*/
             if($book_item!=null) {
-                return redirect('/admin/story_item')->with('notify-success', 'Thêm danh mục thành công');
+                return redirect('/admin/book')->with('notify-success', 'Thêm danh mục thành công');
             } else {
-                return redirect('/admin/story_item')->with('notify-error', 'Thêm danh mục thất bại');
+                return redirect('/admin/book')->with('notify-error', 'Thêm danh mục thất bại');
             }    
         }
     }
     /*
         function trả về view chỉnh sửa với dữ liệu là danh sách parent_id
     */
-    public function update($id,Request $request, CategoryRepository $categoryRepository, ItemStoryRepository $itemStoryRepository)
+    public function update($id,Request $request, CategoryRepository $categoryRepository, ProductRepository $poductRepository)
     {
         $validator = Validator::make(['item_story_id' => $id], [
             'item_story_id'   => 'exists:m_item_story,item_story_id'
@@ -165,7 +163,7 @@ class ProductController extends Controller
         else
         {
             $category_list = MCategory::where('parent_id', 0)->get();
-            $item_story = $itemStoryRepository->find((int)$id);
+            $item_story = $ProductRepository->find((int)$id);
             return view('Backend.items.update', ['item_story' => $item_story,'category_list' => $category_list]);
         }
     }
@@ -173,10 +171,10 @@ class ProductController extends Controller
     /*
         *Thực hiện chức năng chỉnh sửa.
     */
-    public function postUpdate($id, Request $request, ItemStoryRepository $itemStoryRepository,ItemTranslateRepository $itemTranslateRepository )
+    public function postUpdate($id, Request $request, ProductRepository $ProductRepository,ItemTranslateRepository $itemTranslateRepository )
     {
         //Tìm kiếm item theo id và kiểm tra validate khi chỉnh sửa
-        $item = $itemStoryRepository->find((int) $id);
+        $item = $ProductRepository->find((int) $id);
         $validator = Validator::make(
             $request->all(),
             [
@@ -244,7 +242,7 @@ class ProductController extends Controller
 
                 $nameImage->move(public_path('upload/image/item_Story/'), $imageURL);
                 
-                $itemStoryRepository->update(
+                $ProductRepository->update(
                     [
                         "url_image"          => $imageURL,
                     ],
@@ -271,7 +269,7 @@ class ProductController extends Controller
                     }
                     Input::file('sound')->move(public_path('upload/audio/item_Story/'), $soundURL);
                     //update file
-                    $itemStoryRepository->update(
+                    $ProductRepository->update(
                         [
                             "sound"          =>$soundURL,
                         ],
@@ -287,7 +285,7 @@ class ProductController extends Controller
             }
 
             //update item
-            $itemStoryRepository->update([
+            $ProductRepository->update([
                 "code"              => $code,                
                 "status"            => $status,
             ],
@@ -343,17 +341,14 @@ class ProductController extends Controller
     }
 
     /*Thực hiện update cờ delete_flag*/
-    public function delete($id,ItemStoryRepository $itemStoryRepository )
+    public function delete($id,ProductRepository $productRepository )
     {
         //get list quiz choosed 
         //$list_id = $rq->get('list_id');
         
-            $itemStoryRepository->update(
-                [
-                    "deleted_flag"          => 1, 
-                ],
+            $ProductRepository->delete(
                 $id,
-                "item_story_id"
+                "p_id"
             );
         
         return redirect()->back();
