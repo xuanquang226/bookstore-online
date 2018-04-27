@@ -1,6 +1,7 @@
 package com.example.quang.bookstoreonline;
 
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,6 +51,15 @@ public class UserFragment extends Fragment {
         });
 
         btnEdit = (Button) view.findViewById(R.id.btnEdit);
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.dialog_info_user_layout);
+                dialog.setTitle("Edit profile");
+                dialog.show();
+            }
+        });
 
         btnLogout = (Button) view.findViewById(R.id.btnLogout);
 

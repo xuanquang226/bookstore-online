@@ -55,8 +55,9 @@
             android:layout_height="wrap_content"
             android:text="Password: "
             android:id="@+id/txtPasswordA"
-            android:layout_below="@+id/edtUsernameA"
+            android:layout_below="@+id/txtUsernameA"
             android:layout_alignLeft="@+id/txtUsernameA"
+            android:layout_marginTop="15dp"
             />
         <EditText
             android:layout_width="match_parent"
@@ -69,8 +70,9 @@
             android:layout_height="wrap_content"
             android:text="Re-password: "
             android:id="@+id/txtRePassword"
-            android:layout_below="@+id/edtPasswordA"
+            android:layout_below="@+id/txtPasswordA"
             android:layout_alignLeft="@+id/txtPasswordA"
+            android:layout_marginTop="15dp"
             />
         <EditText
             android:layout_width="match_parent"
@@ -83,8 +85,9 @@
             android:layout_height="wrap_content"
             android:text="Email "
             android:id="@+id/txtEmail"
-            android:layout_below="@+id/edtRePassword"
+            android:layout_below="@+id/txtRePassword"
             android:layout_alignLeft="@+id/txtUsernameA"
+            android:layout_marginTop="15dp"
             />
         <EditText
             android:layout_width="match_parent"
@@ -97,8 +100,9 @@
             android:layout_height="wrap_content"
             android:text="Address:"
             android:id="@+id/txtAddress"
-            android:layout_below="@+id/edtEmail"
+            android:layout_below="@+id/txtEmail"
             android:layout_alignLeft="@+id/txtUsernameA"
+            android:layout_marginTop="15dp"
             />
         <EditText
             android:layout_width="match_parent"
@@ -111,8 +115,9 @@
             android:layout_height="wrap_content"
             android:text="Phone: "
             android:id="@+id/txtPhone"
-            android:layout_below="@+id/edtAddress"
+            android:layout_below="@+id/txtAddress"
             android:layout_alignLeft="@+id/txtUsernameA"
+            android:layout_marginTop="15dp"
             />
         <EditText
             android:layout_width="match_parent"

@@ -3,6 +3,7 @@ package com.example.quang.bookstoreonline;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.example.quang.bookstoreonline.Adapters.ViewOrdersAdapter;
@@ -22,6 +23,7 @@ public class ViewOrdersActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("ViewOrder");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.listViewVOrders);
         viewOrders.add(new ViewOrdersModel("Đắc nhân tâm", "150.000", "First New", R.drawable.dacnhantam));
@@ -30,5 +32,15 @@ public class ViewOrdersActivity extends AppCompatActivity {
 
         adapter = new ViewOrdersAdapter(this, R.layout.listview_view_orders_custom, viewOrders);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
