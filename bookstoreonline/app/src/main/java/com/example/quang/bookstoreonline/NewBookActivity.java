@@ -4,7 +4,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.quang.bookstoreonline.Adapters.NewBookAdapter;
 import com.example.quang.bookstoreonline.Adapters.ViewOrdersAdapter;
@@ -22,6 +25,12 @@ public class NewBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_book_layout);
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerA);
+        ArrayList<String> filter  = new ArrayList<String>();
+        filter.add("Price");
+        filter.add("Author");
+        ArrayAdapter<String> adapterB = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,filter);
+        spinner.setAdapter(adapterB);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("New Books");

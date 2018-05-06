@@ -4,7 +4,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.example.quang.bookstoreonline.Adapters.FeatureBookAdapter;
 import com.example.quang.bookstoreonline.Adapters.NewBookAdapter;
@@ -25,6 +27,14 @@ public class FeatureBookActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Feature Books");
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerB);
+        ArrayList<String> filter  = new ArrayList<String>();
+        filter.add("Price");
+        filter.add("Author");
+        ArrayAdapter<String> adapterB = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,filter);
+        spinner.setAdapter(adapterB);
+
 
         listView = (ListView) findViewById(R.id.listViewFBook);
         featureBook.add(new FeatureBookModel("Đắc nhân tâm", "150.000", "First New", R.drawable.dacnhantam));

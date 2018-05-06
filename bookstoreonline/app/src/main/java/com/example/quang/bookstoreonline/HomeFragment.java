@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,6 +29,7 @@ import com.example.quang.bookstoreonline.Models.CardViewModel;
 import com.example.quang.bookstoreonline.Models.NewBookModel;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Vector;
 
 
@@ -74,7 +76,7 @@ public class HomeFragment extends Fragment {
         View view = null;
         view = inflater.inflate(R.layout.fragment_home_layout, container, false);
 
-
+        setHasOptionsMenu(true);
         //aaa
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle("Home");
@@ -107,8 +109,31 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // dua nut search vao action bar
+
+        inflater.inflate(R.menu.search,menu);
+        // tao 1 search view
+        final android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) menu.findItem(R.id.menuSearchHome).getActionView();
+        //bat su kien cho nut search
+
+        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
 
 
+                return true;
 
+            }
 
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }
