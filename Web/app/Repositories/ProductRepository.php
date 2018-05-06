@@ -22,7 +22,7 @@ class ProductRepository extends BaseRepository
         return $this->model
             ->join('t_category', 't_product.c_type_id', '=', 't_category.c_type_id')
             ->select('t_product.*', 't_category.c_type_name')
-            ->get();
+            ->first();
     }
     public function getFirstItemInDB()
     {
