@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\Models\MCode;
 use App\Repositories\CodeRepository;
 
-class BackendController extends Controller
+class BillController extends Controller
 {
     /*function trả về view login*/
     public function loginForm()

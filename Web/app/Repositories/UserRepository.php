@@ -14,11 +14,13 @@ class UserRepository extends BaseRepository
 
     public static function findUser($name)
     {
-        return MUser::where('email', $name)->first();
+        return MUser::where('c_email', $name)->first();
     }
     public function getAllUsers() 
     {
         $users = $this->model->get();
         return $users;
     }
+    
+
 }
