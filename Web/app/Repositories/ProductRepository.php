@@ -22,8 +22,9 @@ class ProductRepository extends BaseRepository
         return $this->model
             ->join('t_category', 't_product.c_type_id', '=', 't_category.c_type_id')
             ->select('t_product.*', 't_category.c_type_name')
-            ->first();
+            ->get();
     }
+
     public function getFirstItemInDB()
     {
         return $this->model->first();
@@ -34,4 +35,11 @@ class ProductRepository extends BaseRepository
         return MProducts::where('p_id', $id)->first();
     }
 
+    //
+    //API
+    public function getProductPrice($pro_id)
+    {
+        return $this->model->where('p_id',$pro_id)
+            ->first(['p_price']);
+    }
 }

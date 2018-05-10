@@ -1,115 +1,58 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\API;
 
-use App\Models\MUser;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
-use App\Utils\SessionManager;
+use App\Models\MBill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Cookie;
-use App\Models\MCode;
-use App\Repositories\CodeRepository;
+use App\Repositories\BillRepository;
+use App\Repositories\ProductRepository;
 
 class BillController extends Controller
 {
-    /*function trả về view login*/
-    public function loginForm()
+    public function insertBill(Request $request ,BillRepository $billRepository,ProductRepository $productRepository)
     {
-        /*
-            *Kiểm tra session trước khi quay về trang login. 
-            *Nếu có session thì redirect về trang chủ.
-        */
-        $sessionLogin = SessionManager::getLoginInfo();
-        if($sessionLogin)
-        {
-            return redirect('/admin');
-        }
-        return view('Backend.login');
-    }
-
-    /*function thực hiện chức năng login, kiểm tra đăng nhập, remember me*/
-    public function login(Request $request,UserRepository $userRepository )
-    {
-        //lấy cookie  và kiểm tra xem có tồn tại cookie không.
-        $cookie = Cookie::get('remember_token');
-        if($cookie != null)
-        {
-            $userObj = MUser::where('remember_token',$cookie)->first();
-            SessionManager::setLoginInfo($userObj);
-            return redirect('/admin'); 
-        }
-        /*Kiểm tra validate khi đăng nhập*/
-        else
-        {
-            $validator = Validator::make($request->all(), [
-            'email'             => 'required',
-            'password'          => 'required'
-            ],
-            [
-                'email.required'    => 'Vui lòng nhập email người dùng',
-                'password.required'  => 'Vui lòng nhập mật khẩu để đăng nhập.',
-            ]);
-
-            if ($validator->fails())
-            {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
-            else
-            {
-                $email = $request->get('email');
-                $password = $request->get('password');
-                $user = $userRepository->findUser($email);
-                
-                //Thực hiện công việc kiểm tra tài khoản đăng nhập là chính xác
-                if ($user)
-                {
-                    if($user->user_role == 0 || $user->user_role == 1)
-                    {
-                        if (Hash::check($password, $user['password']))
-                        {
-                            //if check remember me, rand auto a string and make remember_token of user 
-                            if($request->get('remember'))
-                            {
-                                $user->remember_token = SessionManager::generateToken();
-                                $user->save();
-                                Cookie::queue(Cookie::make('remember_token', $user->remember_token, 119));
-                                
-                            }
-                            SessionManager::setLoginInfo($user);
-                            return redirect('/admin');                    
-                        }
-                        else return redirect()->back()->withErrors(['login' => "Tài khoản hoặc mật khẩu không đúng"])->withInput();
-                    }else return redirect()->back()->withErrors(['login' => "Tên người dùng không phải là admin "])->withInput();
-                        
-                }
-                else return redirect()->back()->withErrors(['login' => "Tài khoản hoặc mật khẩu không đúng"])->withInput();
-
-                
-            }
-        }
+        // $json = array(  'cus_id' => 1, 
+        //                 'product' => [
+        //                             '0'=> ['pro_id' => 15,
+        //                                     'quantity'=> 10,
+        //                                 ],
+        //                             '1'=> ['pro_id' => 6,
+        //                                     'quantity'=> 12,
+        //                                 ],
+        //                             ],
+        //         );
+        //     var_dump(json_encode($json));
         
+
+        $cus_id = $request->cus_id;
+        $product = $request->product;
+        $bill_id = $billRepository->getLastID()+1;
+        $data_bill = ['cus_id' => $cus_id,];
     
-    }
+        foreach ($product as $item) {
+            $data_bill['bill_id'] = $bill_id;
+            $data_bill['pro_id'] = $item['pro_id'];
+            $data_bill['quantity']  = $item['quantity'];
+            $price = $productRepository->getProductPrice($data_bill['pro_id'])->p_price;
+            $data_bill['total_price'] = $price * $data_bill['quantity'];
+            $data_bill['created_time'] = date("Y-m-d H:i:s");
+            $result = $billRepository->insertBill($data_bill);
+        }   
+        if ($result) {
+                    return response()->json([
+                        'resultCode'    => 0,
+                        'message'       => 'Đã lưu hóa đơn',
+                        'data'          => $result,
+                    ]);
+            } else {
+                    return response()->json([
+                        'resultCode'    => -1,
+                        'message'       => 'Lưu thất bại',
+                        'data'          => NULL,
+                    ]);
+            }
 
-    //logout 
-    public function logout()
-    {   
-        Cookie::queue(Cookie::forget('remember_token'));
-        Session::flush();
-        return redirect('login');
-        
     }
-
-    /*function trả về view index của backend*/
-    public function index(Request $request)
-    {
-        return view('Backend.index'); 
-        
-    }
-
     
 }

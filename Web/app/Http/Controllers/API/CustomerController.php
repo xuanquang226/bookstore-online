@@ -42,7 +42,6 @@ class CustomerController extends Controller
             if (!empty($user)){
 
                     if ($password===$user['c_password']){
-                        // var_dump($user['c_password'],$password);die();
                         $user['c_api_token']  = str_random(60);
                         $create_api         = $customerRepository->create_api_token($user['c_api_token'],$login_id);
                         $json               = $create_api->toArray();
@@ -93,27 +92,26 @@ class CustomerController extends Controller
                 'data'                  => null
             ]);
         }else{
-
             $data           = array_merge($request->all(),[
                 'c_api_token'     => null,
                 'c_coin'     => null,
             ]);
-
+            $arrayEmail = array();
             $check = $customerRepository->getLogin();
-            foreach ($check as $row) {
-                foreach ($row as $key) {
-                    $arrayEmail[]= $key;
+                foreach ($check as $row) {
+                    foreach ($row as $key) {
+                        $arrayEmail[]= $key;
+                    }
                 }
-            }
 
-            $login_id = $request->get('c_mail');
-            if (in_array($login_id, $arrayEmail,true))
-            {
-                return response()->json([
-                    'resultCode'    => -1,
-                    'message'       => 'Tên đăng nhập này đã tồn tại',
-                    'data'          => null,
-                ]);
+                $login_id = $request->get('c_mail');
+                if (in_array($login_id, $arrayEmail,true))
+                {
+                    return response()->json([
+                        'resultCode'    => -1,
+                        'message'       => 'Tên đăng nhập này đã tồn tại',
+                        'data'          => null,
+                    ]);
             } else{
                     $data['c_password']      = bcrypt($data['c_password']);
                     $user = $customerRepository->registerUser($data);
