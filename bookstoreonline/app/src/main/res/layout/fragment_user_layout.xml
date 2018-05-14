@@ -37,7 +37,7 @@
                 android:src="@drawable/phone" />
 
             <TextView
-                android:id="@id/txtPhone"
+                android:id="@+id/txtPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="09086862x"
@@ -70,40 +70,7 @@
         android:layout_weight="6"
         android:orientation="vertical"
         android:gravity="center_vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/orders"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View Orders"
-                android:textAllCaps="false"
-                android:id="@+id/btnViewOrders"
-                android:textAlignment="textStart"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/cart"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View Shopping Cart"
-                android:textAllCaps="false"
-                android:id="@+id/btnViewCart"
-                android:textAlignment="textStart"/>
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

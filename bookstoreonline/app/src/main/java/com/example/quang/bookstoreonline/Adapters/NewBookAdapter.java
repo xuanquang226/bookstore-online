@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.quang.bookstoreonline.Models.NewBookModel;
 import com.example.quang.bookstoreonline.Models.ViewOrdersModel;
 import com.example.quang.bookstoreonline.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,6 @@ public class NewBookAdapter extends ArrayAdapter<NewBookModel> {
             viewHolder.imgBookC = (ImageView) convertView.findViewById(R.id.imgBookListC);
             viewHolder.nameBookC = (TextView) convertView.findViewById(R.id.txtNameBookC);
             viewHolder.priceC = (TextView) convertView.findViewById(R.id.txtPriceC);
-            viewHolder.authorC = (TextView) convertView.findViewById(R.id.txtAuthorC);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -60,8 +60,7 @@ public class NewBookAdapter extends ArrayAdapter<NewBookModel> {
 
         viewHolder.nameBookC.setText(newBookModels.get(position).getNameBookC());
         viewHolder.priceC.setText(newBookModels.get(position).getPriceC() + " VND");
-        viewHolder.authorC.setText(newBookModels.get(position).getAuthorC());
-        viewHolder.imgBookC.setImageResource(newBookModels.get(position).getImgBookC());
+        Picasso.with(getContext()).load(newBookModels.get(position).getImgBookC()).into(viewHolder.imgBookC);
 
         return convertView;
     }

@@ -5,18 +5,30 @@ package com.example.quang.bookstoreonline.Models;
  */
 
 public class NewBookModel {
+    public Integer idBookC;
     public String nameBookC;
     public String priceC;
-    public String authorC;
-    public Integer imgBookC;
+    public String imgBookC;
+    public String decsA;
 
 
-    public NewBookModel(String nameBookC, String priceC, String authorC, Integer imgBookC) {
+
+    public NewBookModel(Integer idBookC, String nameBookC, String priceC, String imgBookC, String decsA) {
+        this.idBookC = idBookC;
         this.nameBookC = nameBookC;
         this.priceC = priceC;
-        this.authorC = authorC;
         this.imgBookC = imgBookC;
+        this.decsA = decsA;
 
+
+    }
+
+    public Integer getIdBookC() {
+        return idBookC;
+    }
+
+    public void setIdBookC(Integer idBookC) {
+        this.idBookC = idBookC;
     }
 
     public String getNameBookC() {
@@ -35,20 +47,19 @@ public class NewBookModel {
         this.priceC = priceC;
     }
 
-    public String getAuthorC() {
-        return authorC;
-    }
-
-    public void setAuthorC(String authorC) {
-        this.authorC = authorC;
-    }
-
-    public Integer getImgBookC() {
+    public String getImgBookC() {
         return imgBookC;
     }
 
-    public void setImgBookC(Integer imgBookC) {
+    public void setImgBookC(String imgBookC) {
         this.imgBookC = imgBookC;
     }
 
+    public String getDecsA() {
+        return decsA;
+    }
+
+    public void setDecsA(String decsA) {
+        this.decsA = decsA;
+    }
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.quang.bookstoreonline.Models.ViewOrdersModel;
 import com.example.quang.bookstoreonline.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +61,9 @@ public class ViewOrdersAdapter extends ArrayAdapter<ViewOrdersModel> {
 
         viewHolder.nameBook.setText(viewOrders.get(position).getNameBook());
         viewHolder.price.setText(viewOrders.get(position).getPrice() + " VND");
-        viewHolder.author.setText(viewOrders.get(position).getAuthor());
-        viewHolder.imgBook.setImageResource(viewOrders.get(position).getImgBook());
+//        viewHolder.imgBook.setImageResource(viewOrders.get(position).getImgBook());
+
+        Picasso.with(getContext()).load(viewOrders.get(position).getImgBook()).into(viewHolder.imgBook);
 
         return convertView;
     }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.quang.bookstoreonline.Models.FeatureBookModel;
 import com.example.quang.bookstoreonline.Models.NewBookModel;
 import com.example.quang.bookstoreonline.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -60,8 +61,7 @@ public class FeatureBookAdapter extends ArrayAdapter<FeatureBookModel> {
 
         viewHolder.nameBookD.setText(featureBook.get(position).getNameBookD());
         viewHolder.priceD.setText(featureBook.get(position).getPriceD() + " VND");
-        viewHolder.authorD.setText(featureBook.get(position).getAuthorD());
-        viewHolder.imgBookD.setImageResource(featureBook.get(position).getImgBookD());
+        Picasso.with(getContext()).load(featureBook.get(position).getImgBookD()).into(viewHolder.imgBookD);
 
         return convertView;
     }

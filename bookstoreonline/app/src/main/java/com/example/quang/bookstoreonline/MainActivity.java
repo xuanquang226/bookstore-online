@@ -1,6 +1,8 @@
 package com.example.quang.bookstoreonline;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,10 +36,18 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
 
+    public static boolean isLogin = false;
+	ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // change color actionBar
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#70b243")));
+
 
         //Fragment
         homeFragment = new HomeFragment();
@@ -75,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
         //BottomNavigation
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.botNav);
+        bottomNavigationView.setBackgroundColor(getResources().getColor(R.color.colorGreenB));
+
         frameLayout = (FrameLayout) findViewById(R.id.flScreen);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -17,7 +17,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txtSignUp"
             android:text="SIGN UP"
             android:textSize="35sp"
             android:textColor="@color/colorGreenA"
@@ -37,9 +36,9 @@
         android:layout_margin="10dp"
         >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text="Username: "
+            android:text="Username:"
             android:id="@+id/txtUsernameA"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -48,12 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtUsernameA"
-            android:layout_toRightOf="@id/txtRePassword"
+            android:layout_toRightOf="@id/txtUsernameA"
             android:layout_alignBaseline="@+id/txtUsernameA"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text="Password: "
+            android:text="Password:"
             android:id="@+id/txtPasswordA"
             android:layout_below="@+id/txtUsernameA"
             android:layout_alignLeft="@+id/txtUsernameA"
@@ -63,12 +62,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtPasswordA"
-            android:layout_toRightOf="@id/txtRePassword"
-            android:layout_alignBaseline="@+id/txtPasswordA"/>
+            android:password="true"
+            android:layout_toRightOf="@id/txtPasswordA"
+            android:layout_alignBaseline="@id/txtPasswordA"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text="Re-password: "
+            android:text="Re-password:"
             android:id="@+id/txtRePassword"
             android:layout_below="@+id/txtPasswordA"
             android:layout_alignLeft="@+id/txtPasswordA"
@@ -78,12 +78,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtRePassword"
+            android:password="true"
             android:layout_toRightOf="@id/txtRePassword"
             android:layout_alignBaseline="@+id/txtRePassword"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text="Email "
+            android:text="Email"
             android:id="@+id/txtEmail"
             android:layout_below="@+id/txtRePassword"
             android:layout_alignLeft="@+id/txtUsernameA"
@@ -96,7 +97,7 @@
             android:layout_toRightOf="@id/txtRePassword"
             android:layout_alignBaseline="@+id/txtEmail"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
             android:text="Address:"
             android:id="@+id/txtAddress"
@@ -111,9 +112,9 @@
             android:layout_toRightOf="@id/txtRePassword"
             android:layout_alignBaseline="@+id/txtAddress"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="wrap_content"
-            android:text="Phone: "
+            android:text="Phone:"
             android:id="@+id/txtPhone"
             android:layout_below="@+id/txtAddress"
             android:layout_alignLeft="@+id/txtUsernameA"

@@ -5,19 +5,19 @@ package com.example.quang.bookstoreonline.Models;
  */
 
 public class CardViewModel {
-    int imgSource;
+    String imgSource;
     String name;
 
-    public CardViewModel(int imgSource, String name) {
+    public CardViewModel(String imgSource, String name) {
         this.imgSource = imgSource;
         this.name = name;
     }
 
-    public int getImgSource() {
+    public String getImgSource() {
         return imgSource;
     }
 
-    public void setImgSource(int imgSource) {
+    public void setImgSource(String imgSource) {
         this.imgSource = imgSource;
     }
 

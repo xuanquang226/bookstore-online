@@ -7,17 +7,15 @@ package com.example.quang.bookstoreonline.Models;
 public class CartModel {
     public String nameBookB;
     public float priceB;
-    public String authorB;
     public Integer amount;
-    public Integer imgBookB;
+    public String imgBookB;
 
     public CartModel() {
     }
 
-    public CartModel(String nameBookB, float priceB, String authorB, Integer amount, Integer imgBookB) {
+    public CartModel(String nameBookB, float priceB,  Integer amount, String imgBookB) {
         this.nameBookB = nameBookB;
         this.priceB = priceB;
-        this.authorB = authorB;
         this.amount = amount;
         this.imgBookB = imgBookB;
     }
@@ -38,14 +36,6 @@ public class CartModel {
         this.priceB = priceB;
     }
 
-    public String getAuthorB() {
-        return authorB;
-    }
-
-    public void setAuthorB(String authorB) {
-        this.authorB = authorB;
-    }
-
     public Integer getAmount() {
         return amount;
     }
@@ -54,11 +44,11 @@ public class CartModel {
         this.amount = amount;
     }
 
-    public Integer getImgBookB() {
+    public String getImgBookB() {
         return imgBookB;
     }
 
-    public void setImgBookB(Integer imgBookB) {
+    public void setImgBookB(String imgBookB) {
         this.imgBookB = imgBookB;
     }
 }

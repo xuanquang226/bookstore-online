@@ -34,21 +34,6 @@ public class UserFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = null;
         view = inflater.inflate(R.layout.fragment_user_layout, container, false);
-        btnViewOrders = (Button) view.findViewById(R.id.btnViewOrders);
-        btnViewOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(),ViewOrdersActivity.class));
-            }
-        });
-
-        btnViewCart = (Button) view.findViewById(R.id.btnViewCart);
-        btnViewCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(),CartActivity.class));
-            }
-        });
 
         btnEdit = (Button) view.findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(new View.OnClickListener() {

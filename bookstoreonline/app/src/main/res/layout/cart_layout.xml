@@ -29,12 +29,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total Price: "/>
+            android:text="Total Price: "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:background="@color/colorGreenB"
+
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/txtTotalA"
-            android:text="330.000 VND "/>
+            android:text="0 VND "
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:background="@color/colorGreenB"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

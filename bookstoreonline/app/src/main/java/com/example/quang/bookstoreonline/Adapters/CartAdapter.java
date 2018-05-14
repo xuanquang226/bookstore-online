@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.quang.bookstoreonline.Models.CartModel;
 import com.example.quang.bookstoreonline.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,9 +70,10 @@ public class CartAdapter extends ArrayAdapter<CartModel> {
 
         viewHolder.nameBook.setText(cartModels.get(position).getNameBookB());
         viewHolder.priceBook.setText(Float.toString(cartModels.get(position).getPriceB()));
-        viewHolder.author.setText(cartModels.get(position).getAuthorB());
         viewHolder.amount.setText(Integer.toString(cartModels.get(position).getAmount()));
-        viewHolder.imgBook.setImageResource(cartModels.get(position).getImgBookB());
+//        viewHolder.imgBook.setImageResource(cartModels.get(position).getImgBookB());
+
+        Picasso.with(getContext()).load(cartModels.get(position).getImgBookB()).into(viewHolder.imgBook);
 
         viewHolder.btnIncrease.setOnClickListener(new View.OnClickListener() {
             @Override

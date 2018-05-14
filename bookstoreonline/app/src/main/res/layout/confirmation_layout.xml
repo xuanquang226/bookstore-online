@@ -80,7 +80,7 @@
                 android:text="Coin: " />
 
             <TextView
-                android:id="@+id/txtCoin"
+                android:id="@+id/txtCoinC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="300.000 VND" />
@@ -98,7 +98,7 @@
                 android:text="Address: " />
 
             <TextView
-                android:id="@+id/txtAddressB"
+                android:id="@+id/txtAddressC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="26 Đường Láng, Hà Nội" />
@@ -117,7 +117,7 @@
                 android:text="Phone:" />
 
             <TextView
-                android:id="@+id/txtPhoneB"
+                android:id="@+id/txtPhoneC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0909999999" />
@@ -136,7 +136,7 @@
                 android:text="Total: " />
 
             <TextView
-                android:id="@+id/txtTotal"
+                android:id="@+id/txtTotalC"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"

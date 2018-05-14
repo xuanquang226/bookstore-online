@@ -7,13 +7,11 @@ package com.example.quang.bookstoreonline.Models;
 public class ViewOrdersModel {
     public String nameBook;
     public String price;
-    public String author;
-    public Integer imgBook;
+    public String imgBook;
 
-    public ViewOrdersModel(String nameBook, String price, String author, Integer imgBook) {
+    public ViewOrdersModel(String nameBook, String price, String imgBook) {
         this.nameBook = nameBook;
         this.price = price;
-        this.author = author;
         this.imgBook = imgBook;
     }
 
@@ -33,19 +31,11 @@ public class ViewOrdersModel {
         this.price = price;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public Integer getImgBook() {
+    public String getImgBook() {
         return imgBook;
     }
 
-    public void setImgBook(Integer imgBook) {
+    public void setImgBook(String imgBook) {
         this.imgBook = imgBook;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.quang.bookstoreonline.Adapters;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.quang.bookstoreonline.Models.CardViewModel;
 import com.example.quang.bookstoreonline.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.Vector;
 
@@ -45,8 +47,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(RecyclerViewAdapter.MyViewHolder holder, int position) {
-        Drawable drawable = holder.imageView.getResources().getDrawable(data.get(position).getImgSource());
-        holder.imageView.setImageDrawable(drawable);
+        Context context = holder.imageView.getContext();
+        Picasso.with(context).load(data.get(position).getImgSource()).into(holder.imageView);
         holder.textView.setText(data.get(position).getName());
     }
 
